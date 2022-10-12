@@ -1,5 +1,5 @@
 <script lang="ts">
-  //
+  import Milestone from "./_Milestone.svelte";
 </script>
 
 <svelte:head>
@@ -7,14 +7,13 @@
   <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
-  <h1>Home</h1>
-</section>
+<main>
+  <Milestone />
+</main>
 
 <style lang="scss">
-  section {
-    h1 {
-      font-size: 2rem;
-    }
+  main {
+    max-width: 960px;
+    margin: 1rem auto;
   }
 </style>
