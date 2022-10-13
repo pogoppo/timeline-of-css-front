@@ -14,6 +14,19 @@ export default class {
     this.#db = db;
   }
 
+  lastUpdate() {
+    const stmt = this.#db.prepare(`
+      SELECT p.created_at
+      FROM css_properties as p
+      ORDER BY p.created_at DESC
+    `);
+
+    stmt.step();
+    const { created_at } = stmt.getAsObject();
+    stmt.free();
+    return new Date(created_at as string);
+  }
+
   *orderByVersion(asc: boolean = false) {
     const stmt = this.#db.prepare(`
       SELECT p.name, p.version, p.link, r.release_date
@@ -28,5 +41,7 @@ export default class {
       const [name, version, link, releaseDate] = stmt.get();
       yield { name, version, link, releaseDate } as Prop;
     };
+
+    stmt.free();
   }
 }
