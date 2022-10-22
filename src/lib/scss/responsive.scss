@@ -1,0 +1,30 @@
+$breakpoints: (
+  "to-S": (
+    max-width: 480px,
+  ),
+  "from-S": (
+    min-width: 481px,
+  ),
+  "to-M": (
+    max-width: 768px,
+  ),
+  "from-M": (
+    min-width: 769px,
+  ),
+  "to-L": (
+    max-width: 1200px,
+  ),
+  "from-L": (
+    min-width: 1201px,
+  ),
+) !default;
+
+@mixin mq($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media screen and #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @error "Error: Cannot get breakpoint.";
+  }
+}

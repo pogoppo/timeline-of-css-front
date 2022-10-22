@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "css-milestone-front",
+  "name": "timeline-of-css-front",
   "version": "0.0.1",
   "scripts": {
     "dev": "vite dev",
